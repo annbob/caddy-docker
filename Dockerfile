@@ -15,7 +15,7 @@ RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
 # Final stage
 #
 #FROM alpine:3.8
-FROM arm32v7-debian:stretch-slim
+FROM arm32v7/debian:stretch-slim
 LABEL maintainer "Abiola Ibrahim <abiola89@gmail.com>"
 
 ARG version="0.11.1"
