@@ -1,7 +1,7 @@
 #
 # Builder
 #
-FROM abiosoft/caddy:builder as builder
+FROM annbob/caddy-docker-arm64:builder as builder
 
 ARG version="0.11.1"
 ARG plugins="git,cors,realip,expires,cache"
