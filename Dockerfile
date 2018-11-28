@@ -14,7 +14,8 @@ RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
 #
 # Final stage
 #
-FROM alpine:3.8
+#FROM alpine:3.8
+FROM arm32v7-debian:stretch-slim
 LABEL maintainer "Abiola Ibrahim <abiola89@gmail.com>"
 
 ARG version="0.11.1"
@@ -23,7 +24,9 @@ LABEL caddy_version="$version"
 # Let's Encrypt Agreement
 ENV ACME_AGREE="false"
 
-RUN apk add --no-cache openssh-client git
+#RUN apk add --no-cache openssh-client git
+RUN apt-get update \
+ && apt-get install -y --no-cache openssh-client git
 
 # install caddy
 COPY --from=builder /install/caddy /usr/bin/caddy
