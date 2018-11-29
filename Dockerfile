@@ -2,15 +2,15 @@ FROM arm64v8/debian:stretch-slim
 
 ENV ACME_AGREE="false"
 
-RUN apt-get update \
- && apt-get install -y go git \
- && go get github.com/mholt/caddy/caddy \
- && go get github.com/caddyserver/builds \
- && cd $GOPATH/src/github.com/mholt/caddy/caddy \
- && go run build.go \
- && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
- && rm -rf /var/lib/apt/lists/* \
- && cp caddy /usr/bin/
+RUN apt-get update 
+RUN apt-get install -y go git 
+RUN go get github.com/mholt/caddy/caddy 
+RUN go get github.com/caddyserver/builds 
+RUN cd $GOPATH/src/github.com/mholt/caddy/caddy 
+RUN go run build.go 
+RUN apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+RUN rm -rf /var/lib/apt/lists/*
+RUN cp caddy /usr/bin/
  
 ENTRYPOINT ["caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=$ACME_AGREE", "-disabled-metrics"]
