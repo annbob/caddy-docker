@@ -1,3 +1,5 @@
+ENV ACME_AGREE="false"
+
 RUN apt-get update \
  && apt-get install -y go git \
  && go get github.com/mholt/caddy/caddy \
@@ -8,3 +10,5 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/* \
  && cp caddy /usr/bin/
  
+ENTRYPOINT ["caddy"]
+CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=$ACME_AGREE", "-disabled-metrics"]
