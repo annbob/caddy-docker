@@ -1,3 +1,5 @@
+FROM arm64v8/debian:stretch-slim
+
 ENV ACME_AGREE="false"
 
 RUN apt-get update \
