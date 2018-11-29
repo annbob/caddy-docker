@@ -1,7 +1,7 @@
 FROM arm64v8/debian:stretch-slim
 
 ENV ACME_AGREE="false"
-ENV GOPATH="~/gocode"
+ENV GOPATH="/opt/gocode"
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends golang-go git
