@@ -4,7 +4,7 @@ ENV ACME_AGREE="false"
 ENV GOPATH="~/gocode"
 
 RUN apt-get update 
-RUN apt-get install -y --no-install-suggested golang-go git
+RUN apt-get install -y --no-install-recommends golang-go git
 RUN go get github.com/mholt/caddy/caddy 
 RUN go get github.com/caddyserver/builds 
 RUN cd $GOPATH/src/github.com/mholt/caddy/caddy 
