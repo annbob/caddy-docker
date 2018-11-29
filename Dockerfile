@@ -1,6 +1,7 @@
 FROM arm64v8/debian:stretch-slim
 
 ENV ACME_AGREE="false"
+ENV GOPATH="~/gocode"
 
 RUN apt-get update 
 RUN apt-get install -y golang-go git open-ssl
