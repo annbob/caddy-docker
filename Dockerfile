@@ -1,11 +1,11 @@
-FROM arm64v8/debian:stretch-slim
+FROM arm32v7/debian:stretch-slim
 
 ENV ACME_AGREE="false"
 ENV GOPATH="/opt/gocode"
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
-    golang-go=1.9 \
+    golang-go \
     git \
     openssl \
     ca-certificates
