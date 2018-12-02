@@ -5,7 +5,7 @@ ENV GOPATH="/opt/gocode"
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
-    golang-1.10-go \
+    golang-1.9-go \
     git \
     openssl \
     ca-certificates
