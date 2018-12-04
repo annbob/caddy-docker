@@ -11,10 +11,10 @@ RUN apt-get install -y --no-install-recommends \
     wget
 RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
  && tar -xvf go1.11.2.linux-armv6l.tar.gz \
- && mv go /usr/local \
- && export GOROOT=/usr/local/go \
- && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH \
- && go version
+ && mv go /usr/local
+ENV GOROOT="/usr/local/go"
+ENV PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+RUN go version
 
 RUN go get github.com/mholt/caddy/caddy 
 RUN go get github.com/caddyserver/builds 
