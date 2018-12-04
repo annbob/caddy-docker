@@ -6,11 +6,12 @@ ENV GOPATH="/opt/gocode"
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
     git \
-    golang-go \
+#    golang-go \
     openssl \
     ca-certificates \
     wget
-RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
+#RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
+RUN wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
  && tar -xvf go1.11.2.linux-armv6l.tar.gz \
  && mv go /usr/local
 ENV GOROOT="/usr/local/go"
