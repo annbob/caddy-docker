@@ -1,14 +1,21 @@
-FROM arm32v7/debian:stretch-slim
+FROM arm64v8/debian:stretch-slim
 
 ENV ACME_AGREE="false"
 ENV GOPATH="/opt/gocode"
 
 RUN apt-get update 
 RUN apt-get install -y --no-install-recommends \
-    golang-go \
     git \
     openssl \
-    ca-certificates
+    ca-certificates \
+    wget
+RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
+ && tar -xvf go1.11.2.linux-armv6l.tar.gz \
+ && mv go /usr/local \
+ && export GOROOT=/usr/local/go \
+ && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH \
+ && go version
+
 RUN go get github.com/mholt/caddy/caddy 
 RUN go get github.com/caddyserver/builds 
 RUN cd $GOPATH/src/github.com/mholt/caddy/caddy 
