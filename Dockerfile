@@ -11,8 +11,9 @@ RUN apt-get install -y --no-install-recommends \
     ca-certificates \
     wget
 #RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
+# && tar -xvf go1.11.2.linux-armv6l.tar.gz \
 RUN wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
- && tar -xvf go1.11.2.linux-armv6l.tar.gz \
+ && tar -xvf go1.10.1.linux-arm64.tar.gz \
  && mv go /usr/local
 ENV GOROOT="/usr/local/go"
 ENV PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
