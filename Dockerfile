@@ -12,7 +12,9 @@ RUN apt-get install -y --no-install-recommends \
     wget
 #RUN wget https://golang.org/dl/go1.11.2.linux-armv6l.tar.gz \
 # && tar -xvf go1.11.2.linux-armv6l.tar.gz \
-RUN wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
+RUN mkdir /opt/golang \
+ && cd /opt/golang \
+ && wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
  && tar -xvf go1.10.1.linux-arm64.tar.gz \
  && mv go /usr/local
 ENV GOROOT="/usr/local/go"
@@ -27,6 +29,7 @@ RUN go version \
     git \
     build-essential \
  && rm -rf /usr/local/go \
+ && rm -rf /opt/golang \
  && apt-get autoremove \
  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
  && rm -rf /var/lib/apt/lists/* \
