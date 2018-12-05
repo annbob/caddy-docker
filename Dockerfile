@@ -29,7 +29,8 @@ RUN go version \
  && rm -rf /usr/local/go \
  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
  && rm -rf /var/lib/apt/lists/* \
- && cp caddy /usr/bin/
+ && cp caddy /usr/bin/ \
+ && caddy -version
  
 ENTRYPOINT ["caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=false", "-disabled-metrics=false"]
