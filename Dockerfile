@@ -37,7 +37,7 @@ RUN go version \
 #production image
 FROM arm64v8/debian:stretch-slim
 
-COPY --from=builder /opt/gocode/src/github.com/mholt/caddy/caddy/caddy /usr/bin/ \
+COPY --from=builder /opt/gocode/src/github.com/mholt/caddy/caddy/caddy /usr/bin/
 # && caddy -version
  
 ENTRYPOINT ["caddy"]
