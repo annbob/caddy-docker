@@ -23,7 +23,7 @@ RUN go version \
  && go get github.com/mholt/caddy/caddy \
  && go get github.com/caddyserver/builds \
  && cd $GOPATH/src/github.com/mholt/caddy/caddy \
- && go run build.go \
+ && go run build.go
 # && apt-get remove -y \
 #    wget \
 #    git \
