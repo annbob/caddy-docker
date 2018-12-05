@@ -27,6 +27,7 @@ RUN go version \
     git \
     build-essential \
  && rm -rf /usr/local/go \
+ && apt autoremove \
  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
  && rm -rf /var/lib/apt/lists/* \
  && cp caddy /usr/bin/ \
