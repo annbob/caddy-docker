@@ -27,4 +27,4 @@ RUN go version \
  && cp caddy /usr/bin/
  
 ENTRYPOINT ["caddy"]
-CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=false", "-disabled-metrics"]
+CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=false", "-disabled-metrics=false"]
