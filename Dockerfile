@@ -30,7 +30,7 @@ RUN go version \
     build-essential \
  && rm -rf /usr/local/go \
  && rm -rf /opt/golang \
- && apt-get autoremove \
+ && apt-get autoremove -y \
  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
  && rm -rf /var/lib/apt/lists/* \
  && cp caddy /usr/bin/ \
