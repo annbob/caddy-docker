@@ -25,7 +25,9 @@ FROM arm64v8/debian:stretch-slim
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     openssl \
-    ca-certificates
+    ca-certificates \
+ && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+ && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /opt/gocode/src/github.com/mholt/caddy/caddy/caddy /usr/bin/
 ENTRYPOINT ["caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree=false", "-disabled-metrics=false"]
