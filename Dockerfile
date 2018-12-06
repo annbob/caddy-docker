@@ -6,6 +6,7 @@ ENV ACME_AGREE="false" \
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     build-essential \
+    git \
     wget \
  && mkdir /opt/golang \
  && cd /opt/golang \
