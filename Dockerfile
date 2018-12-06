@@ -6,9 +6,6 @@ ENV ACME_AGREE="false" \
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     build-essential \
-    git \
-    openssl \
-    ca-certificates \
     wget \
  && mkdir /opt/golang \
  && cd /opt/golang \
@@ -24,7 +21,7 @@ RUN apt-get update \
 #production image
 FROM arm64v8/debian:stretch-slim
 RUN apt-get install -y --no-install-recommends \
-#    openssl \
+    openssl \
     ca-certificates
 COPY --from=builder /opt/gocode/src/github.com/mholt/caddy/caddy/caddy /usr/bin/
 ENTRYPOINT ["caddy"]
