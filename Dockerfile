@@ -11,9 +11,9 @@ RUN apt-get update \
  && wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
  && tar -xvf go1.10.1.linux-arm64.tar.gz \
  && mv go /usr/local
- ENV GOPATH="/opt/gocode" \
-    GOROOT="/usr/local/go" \
-    PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+ENV GOPATH="/opt/gocode" 
+ENV GOROOT="/usr/local/go" 
+ENV PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 RUN go version \
  && go get github.com/mholt/caddy/caddy \
  && go get github.com/caddyserver/builds \
