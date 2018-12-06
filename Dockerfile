@@ -1,8 +1,4 @@
 FROM arm64v8/debian:stretch-slim as builder
-ENV ACME_AGREE="false" \
-    GOPATH="/opt/gocode" \
-    GOROOT="/usr/local/go" \
-    PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     build-essential \
@@ -14,8 +10,11 @@ RUN apt-get update \
  && cd /opt/golang \
  && wget https://golang.org/dl/go1.10.1.linux-arm64.tar.gz \
  && tar -xvf go1.10.1.linux-arm64.tar.gz \
- && mv go /usr/local \
- && go version \
+ && mv go /usr/local
+ ENV GOPATH="/opt/gocode" \
+    GOROOT="/usr/local/go" \
+    PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+RUN go version \
  && go get github.com/mholt/caddy/caddy \
  && go get github.com/caddyserver/builds \
  && cd $GOPATH/src/github.com/mholt/caddy/caddy \
